@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../responsive.dart';
+
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class _LandingPageState extends State<LandingPage> {
     fontsize = MediaQuery.of(context).size.width < 847? 30.0:fontsize;
     fontsize = MediaQuery.of(context).size.width < 686? 26.0:fontsize;
 
-
+       bool isPotrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
 
     return  Container(
@@ -49,12 +51,8 @@ class _LandingPageState extends State<LandingPage> {
           ), 
         
            Container(
-             child: Image(
-                image: AssetImage('images/avatar.png'),
-                width: isbigscreen,
-             
-                
-               ),
+             child: Responsive.isMobile(context)&&isPotrait?Image.asset('assets/images/avatar.png',width: isbigscreen,):
+                     Image(image: AssetImage('assets/images/avatar.png'),width: isbigscreen),
            )
       ],
       ),

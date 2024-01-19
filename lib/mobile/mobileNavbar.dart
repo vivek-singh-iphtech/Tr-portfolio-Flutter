@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/nav_item.dart';
 
+import '../portfolio.dart';
+
 class MobileNavbar extends StatelessWidget {
   const MobileNavbar({Key? key}) : super(key: key);
 
@@ -23,8 +25,11 @@ class MobileNavbar extends StatelessWidget {
               ),
               ListTile(
                 leading: Icon(Icons.home),
-                title: NavItem("home"),
-                onTap: () {
+                title:    NavItem(title: 'Home', onTap: () {
+                  Portfolio.of(context)?.changePageIndex(0);
+                },),
+         
+               onTap: () {
                   Navigator.pop(context);
                 },
               ),
